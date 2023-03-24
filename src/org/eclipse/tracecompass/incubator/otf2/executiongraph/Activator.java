@@ -8,37 +8,43 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin {
 
-	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.tracecompass.incubator.otf2.executiongraph"; //$NON-NLS-1$
+    // The plug-in ID
+    public static final String PLUGIN_ID = "org.eclipse.tracecompass.incubator.otf2.executiongraph"; //$NON-NLS-1$
 
-	// The shared instance
-	private static Activator plugin;
-	
-	/**
-	 * The constructor
-	 */
-	public Activator() {
-	}
+    // The shared instance
+    private static Activator plugin;
 
-	@Override
-	public void start(BundleContext context) throws Exception {
-		super.start(context);
-		plugin = this;
-	}
+    /**
+     * The constructor
+     */
+    public Activator() {
+    }
 
-	@Override
-	public void stop(BundleContext context) throws Exception {
-		plugin = null;
-		super.stop(context);
-	}
+    @Override
+    public void start(BundleContext context) throws Exception {
+        long startTime = System.currentTimeMillis();
+        super.start(context);
+        plugin = this;
+        long endTime = System.currentTimeMillis();
+        System.out.println("Activator start() method execution time: " + (endTime - startTime) + " ms");
+    }
 
-	/**
-	 * Returns the shared instance
-	 *
-	 * @return the shared instance
-	 */
-	public static Activator getDefault() {
-		return plugin;
-	}
+    @Override
+    public void stop(BundleContext context) throws Exception {
+        long startTime = System.currentTimeMillis();
+        plugin = null;
+        super.stop(context);
+        long endTime = System.currentTimeMillis();
+        System.out.println("Activator stop() method execution time: " + (endTime - startTime) + " ms");
+    }
+
+    /**
+     * Returns the shared instance
+     *
+     * @return the shared instance
+     */
+    public static Activator getDefault() {
+        return plugin;
+    }
 
 }
